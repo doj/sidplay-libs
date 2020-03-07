@@ -27,7 +27,7 @@ dnl Use C++ for tests.
 AC_LANG_CPLUSPLUS
 
 dnl Compiler tests
-AC_CHECK_VISIBILITY
+dnl AC_CHECK_VISIBILITY
 
 dnl Check for nothrow allocator.
 MY_CHECK_EXCEPTIONS
