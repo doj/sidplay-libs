@@ -446,7 +446,7 @@ void SidTune::init()
 #ifdef HAVE_EXCEPTIONS
     m_info.commentString = new(std::nothrow) char* [m_info.numberOfCommentStrings];
 #else
-    m_info.commentString = new char* [info.numberOfCommentStrings];
+    m_info.commentString = new char* [m_info.numberOfCommentStrings];
 #endif
     if (m_info.commentString != 0)
         m_info.commentString[0] = SidTuneTools::myStrDup("--- SAVED WITH SIDPLAY ---");

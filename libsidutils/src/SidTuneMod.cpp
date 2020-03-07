@@ -30,21 +30,21 @@ const char *SidTuneMod::createMD5(char *md5)
     {   // Include C64 data.
         MD5 myMD5;
         md5_byte_t tmp[2];
-        myMD5.append (cache.get()+fileOffset,info.c64dataLen);
+        myMD5.append (cache.get()+fileOffset,m_info.c64dataLen);
         // Include INIT and PLAY address.
-        endian_little16 (tmp,info.initAddr);
+        endian_little16 (tmp,m_info.initAddr);
         myMD5.append    (tmp,sizeof(tmp));
-        endian_little16 (tmp,info.playAddr);
+        endian_little16 (tmp,m_info.playAddr);
         myMD5.append    (tmp,sizeof(tmp));
         // Include number of songs.
-        endian_little16 (tmp,info.songs);
+        endian_little16 (tmp,m_info.songs);
         myMD5.append    (tmp,sizeof(tmp));
         {   // Include song speed for each song.
-            uint_least16_t currentSong = info.currentSong;
-            for (uint_least16_t s = 1; s <= info.songs; s++)
+            uint_least16_t currentSong = m_info.currentSong;
+            for (uint_least16_t s = 1; s <= m_info.songs; s++)
             {
                 selectSong (s);
-                myMD5.append (&info.songSpeed,sizeof(info.songSpeed));
+                myMD5.append (&m_info.songSpeed,sizeof(m_info.songSpeed));
             }
             // Restore old song
             selectSong (currentSong);
@@ -53,8 +53,8 @@ const char *SidTuneMod::createMD5(char *md5)
         // clock speed change the MD5 fingerprint. That way the
         // fingerprint of a PAL-speed sidtune in PSID v1, v2, and
         // PSID v2NG format is the same.
-        if (info.clockSpeed == SIDTUNE_CLOCK_NTSC)
-            myMD5.append (&info.clockSpeed,sizeof(info.clockSpeed));
+        if (m_info.clockSpeed == SIDTUNE_CLOCK_NTSC)
+            myMD5.append (&m_info.clockSpeed,sizeof(m_info.clockSpeed));
         // NB! If the fingerprint is used as an index into a
         // song-lengths database or cache, modify above code to
         // allow for PSID v2NG files which have clock speed set to

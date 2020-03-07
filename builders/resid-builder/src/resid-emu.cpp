@@ -194,7 +194,8 @@ void ReSID::volume (uint_least8_t num, uint_least8_t volume)
     
 void ReSID::mute (uint_least8_t num, bool enable)
 {
-    m_sid.mute (num, enable);
+  // doj: doesn't compile: ‘class SID’ has no member named ‘mute’
+  // m_sid.mute (num, enable);
 }
 
 void ReSID::gain (int_least8_t percent)
