@@ -9,11 +9,7 @@ AC_CONFIG_AUX_DIR(unix)
 AM_INIT_AUTOMAKE(sidplay-libs,2.1.1)
 AC_CANONICAL_HOST
 
-hardsid=false
-case "$host" in
-    *linux*) hardsid=true
-        ;;
-esac
+AC_ARG_ENABLE(hardsid, enable hardsid support on Linux, [hardsid=true], [hardsid=false])
 AM_CONDITIONAL(HARDSID, test x$hardsid = xtrue)
 
 echo; echo "Configuring libsidplay..."

@@ -27,6 +27,7 @@ if [ "$1" = hardsid ] ; then
     echo 'SUBDIRS += hardsid-builder' >> builders/Makefile.am
     echo 'endif' >> builders/Makefile.am
     dirs="$dirs builders/hardsid-builder"
+    CONFIGURE_ARGS="--enable-hardsid"
 fi
 
 for d in $dirs; do
@@ -54,5 +55,5 @@ echo "Bootstrapping sidplay-libs..."
 aclocal --force
 automake --force --add-missing --copy
 autoconf --force
-./configure
+./configure $CONFIGURE_ARGS
 make "$@"
