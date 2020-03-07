@@ -17,6 +17,8 @@
 
 #include "config.h"
 
+#define HAVE_USER_RESID 1
+
 // Allow resid to be in more than one location
 #ifdef HAVE_LOCAL_RESID
 #   include "resid/sid.h"

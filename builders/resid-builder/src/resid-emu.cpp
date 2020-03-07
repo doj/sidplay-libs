@@ -25,6 +25,10 @@
 #include "resid.h"
 #include "resid-emu.h"
 
+#ifndef VERSION
+#define VERSION "autoconf"
+#endif
+
 SIDPLAY2_NAMESPACE_START
 
 char ReSID::m_credit[];
